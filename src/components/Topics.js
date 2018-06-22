@@ -18,7 +18,6 @@ class Topics extends Component {
                             <ul>
                                 <li>{topic.title}</li>
                             </ul>
-
                         </div>
                     )
                 })}

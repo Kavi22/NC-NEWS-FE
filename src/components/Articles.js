@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {fetchAllArticles} from '../actions/articles';
 import {connect} from 'react-redux';
-import articles from "../reducers/articles";
 
 class Articles extends Component {
 
