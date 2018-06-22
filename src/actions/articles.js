@@ -26,7 +26,6 @@ export function fetchAllArticles(data){
     return function (dispatch){
         axios.get('https://nc-newstw.herokuapp.com/api/articles')
             .then(res => {
-                console.log(res.data)
                 dispatch(fetchArticlesSuccess(res.data.articles))
             })
             .catch(err =>{
