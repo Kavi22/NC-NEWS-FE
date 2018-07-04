@@ -11,6 +11,7 @@ class Articles extends Component {
     render(){
         return (
             <div className="all-articles">
+
                 <h1>This is the Articles page</h1>
                 {this.props.articles.map((article, i) => {
                     return (

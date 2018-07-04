@@ -16,24 +16,26 @@ class App extends Component {
   render() {
       return <BrowserRouter>
           <div className="main-container">
-              <nav>
-                  <div>
-                      <ul>
-                          <li>
-                              <Link to='/'>Home</Link>
+              <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                  <a className="navbar-brand" href="www.northcoders.com">NC</a>
+                  <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul className="navbar-nav">
+                          <li className="nav-item">
+                              <Link to='/' className="nav-link" >Home</Link>
                           </li>
-                          <li>
-                              <Link to='/articles'>Articles</Link>
+                          <li className="nav-item">
+                              <Link to='/articles' className="nav-link" >Articles</Link>
                           </li>
-                          <li>
-                              <Link to='/topics'>Topics</Link>
+                          <li className="nav-item">
+                              <Link to='/topics' className="nav-link">Topics</Link>
                           </li>
-                          <li>
-                              <Link to='/users'>Users</Link>
+                          <li className="nav-item">
+                              <Link to='/users' className="nav-link">Users</Link>
                           </li>
                       </ul>
                   </div>
               </nav>
+
               <Switch>
                   <Route exact path='/' component={Home}/>
                   <Route exact path='/articles' component={Articles}/>
