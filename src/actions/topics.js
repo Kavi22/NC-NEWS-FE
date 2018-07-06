@@ -22,6 +22,7 @@ export function fetchTopicsFailure(error){
 
 export function fetchAllTopics(data){
     return function (dispatch){
+        dispatch(fetchTopicsRequest());
         axios.get('https://nc-newstw.herokuapp.com/api/topics')
             .then(res => {
                 dispatch(fetchTopicsSuccess(res.data.topics))

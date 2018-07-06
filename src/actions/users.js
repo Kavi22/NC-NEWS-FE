@@ -23,6 +23,7 @@ export function fetchUsersFailure(error){
 
 export function fetchAllUsers(data){
     return function (dispatch){
+        dispatch(fetchUsersRequest());
         axios.get('https://nc-newstw.herokuapp.com/api/users')
             .then(res => {
                 dispatch(fetchUsersSuccess(res.data.users))

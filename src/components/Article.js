@@ -1,54 +1,58 @@
 import React, {Component} from 'react';
-import {fetchAllArticles} from '../actions/articles';
+import {fetchArticleById} from '../actions/articles';
 import {connect} from 'react-redux';
 
-class Articles extends Component {
+class Article extends Component {
 
-    componentDidMount(){
-        this.props.fetchAllArticles()
+    componentDidMount() {
+        this.props.fetchArticleById(this.props.match.params.article_id)
+
     }
 
-    render(){
+    render() {
+        if (!this.props.article.article) return <p>Loading</p>
         return (
-            <div className="all-articles">
+            <div className="article-by-id container">
+                <div className="row">
+                    <h1 className="text-center">{this.props.article.article.title}</h1>
+                </div>
+                <div className="row">
+                    <div className="col-sm-1">
+                        <h6>icon up</h6>
+                        <p>{this.props.article.article.votes}</p>
+                        <h6>icon down</h6>
+                    </div>
+                    <div className="col-sm-11">
+                        <p>{this.props.article.article.body}</p>
+                    </div>
+                </div>
 
-                <h1>This is the Articles page</h1>
-                {this.props.articles.map((article, i) => {
-                    return (
-                        <div key={i}>
-                            <ul>
-                                <li>Article: {article.title}</li>
-                                <li>Created By: {article.created_by}</li>
-                                <li>{article.body}</li>
-                                <li>Votes: {article.votes}</li>
-                            </ul>
-
-                        </div>
-                    )
-                })}
-
+                <div className="row">
+                    <p>Created By: {this.props.article.article.created_by} in {this.props.article.article.belongs_to}</p>
+                </div>
             </div>
+
 
         ) // main return end
 
     } //render end
 }
 
-
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         loading: state.articles.loading,
         error: state.articles.error,
-        articles: state.articles.payload
+        article: state.articles.articleById
     }
 }
 
 function mapDispatchToProps(dispatch) {
-
     return {
-        fetchAllArticles: (data) => {
-            dispatch(fetchAllArticles())
+        fetchArticleById: (id) => {
+            dispatch(fetchArticleById(id))
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Articles);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article);

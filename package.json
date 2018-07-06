@@ -20,7 +20,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "prop-types": "latest"
   },
   "engines": {
     "node": "8.11.2"
